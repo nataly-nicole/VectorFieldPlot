@@ -30,8 +30,8 @@ La versión origian de **VectorFieldPlot** está escrito en **Python 3** y usa m
 
 * Instalación en Linux:
 ```
-git clone 
-cd vectorfieldplot
+git clone https://github.com/nataly-nicole/VectorFieldPlot.git
+cd VectorFieldPlot
 pip install -r requirements.txt
 python setup.py install
 ```
