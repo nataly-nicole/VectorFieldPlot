@@ -1,5 +1,5 @@
 
-# Vector Field Plot
+# VectorFieldPlot
 
 **VectorFieldPlot** (VFPt) es un script escrito en Python que crea gráficos de líneas de campo de alta calidad en el formato gráfico vectorial **svg**.
 
