@@ -85,7 +85,7 @@ Con algunos elementos de campo aparecen ubicaciones no diferenciables. En estos 
 **VectorFieldPlot** usa la biblioteca **lxml** para generar **xml** y especialmente código **svg**. Todos los elementos de la imagen son traducidos al lenguaje **svg** y se escritos en el archivo de imagen. Las imágenes vectoriales pueden ser visualizadas directamente con firefox, eye de gnome, rsvg-view y muchos más. Los programas gráficos como gimp permiten la conversión a imágenes rasterizadas en formato **png** si es necesario.
 
 ### Uso
-Link.
+[Link]{https://github.com/nataly-nicole/VectorFieldPlot/blob/master/VectorFieldPlot%20-%20Uso.ipynb}.
 
 # Ejemplos
 
