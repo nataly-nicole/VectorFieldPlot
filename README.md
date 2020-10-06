@@ -5,11 +5,11 @@
 
 * Traducción al español de: https://commons.wikimedia.org/wiki/User:Geek3/VectorFieldPlot#Field_calculation
 * Sitio del autor original: https://commons.wikimedia.org/wiki/User:Geek3
-* Traducción y algunos aportes relativas al uso de esta versión por Nataly Nicole Ibarra Vera (natalynicole.ibarravera@gmail.com).
+* Traducción y algunos aportes relativos al uso de esta versión por Nataly Nicole Ibarra Vera (natalynicole.ibarravera@gmail.com).
 
 ## Sobre VectorFieldPlot
 
-**VectorFieldPlot** fue especialmente diseñado para el uso en **Wikipedia Commons**. La falta de diagramas de campo físicos correctos de alta calidad en **Wikimedia Commons** me ha inspirado a compensar esto y proveer una herramienta que permita a los usuarios crear los diagramas de campo que éstos requieran. **VectorFieldPlot** ha crecido más allá de la etapa de un simple y pequeño script que ya podría realizar la tarea de crear gráficos de campos físicos. En cambio, intenta cumplir sus requerimientos de la mejor manera posible, que son:
+**VectorFieldPlot** fue especialmente diseñado para el uso en **Wikipedia Commons**. La falta de diagramas de campo físicos correctos de alta calidad en **Wikimedia Commons** me ha inspirado a compensar esto y proveer una herramienta que permita a los usuarios crear los diagramas de campo que éstos requieran. **VectorFieldPlot** ha crecido más allá de la etapa de un simple y pequeño script que podría ya realizar la tarea de crear gráficos de campos físicos. En cambio, intenta cumplir sus requerimientos de la mejor manera posible, que son:
 
 * Corrección/Precisión Física.
 * Pequeño tamaño de archivo/Eficiencia de procesamiento.
@@ -17,13 +17,13 @@
 * Reutilización de imágenes.
 * Otros aspectos son sólo de orden secundario. **VectorFieldPlot** no se desenvolverá de lo mejor en:
     * Simplicidad del código.
-    * Fácil uso.
+    * Fácilidad de uso.
     * Velocidad de ejecución.
     * Efectos gráficos elegantes.
 
 ## Código
 
-La versión origian de **VectorFieldPlot** está escrito en **Python 3** y usa muchas características de **SciPy** y **lxml**. Se puede ejecutar directamente después de insertar la descripción de su imagen al final del [código del programa](https://commons.wikimedia.org/wiki/User:Geek3/VectorFieldPlot#Field_calculation).
+**VectorFieldPlot** está escrito en **Python 3** y usa muchas características de **SciPy** y **lxml**. Se puede ejecutar directamente después de insertar la descripción de su imagen al final del [código del programa](https://commons.wikimedia.org/wiki/User:Geek3/VectorFieldPlot#Field_calculation).
 
 **Comentarios respecto de la versión en Github**:
 * En esta versión, el script original (versión=3.1) se ha modularizado para ser instalado y cargado en los notebooks que ejemplifican su uso. Se recalca que hasta el momento no se ha realizado ninguna modificación significativa a la versión original
@@ -68,21 +68,21 @@ python setup.py install
 
 ### Integración de las líneas de campo
 
-Cada línea de campo comienza en un punto dado por el usuario. Luego se lleva adelante utilizando el método clásico de Runge-Kutta a cuarto orden con adaptación de tamaño escalonado. Bueno, SciPy nos proporciona una rutina para cosas como esa, es decir, odeint. Sin embargo, **VectorFieldPlot** utiliza su propia rutina, ya que hay toneladas de casos especiales como singularidades, bordes o cierres de bucles, todos los cuales necesitan un tratamiento especial.
+Cada línea de campo comienza en un punto dado por el usuario. Luego se lleva adelante utilizando el método clásico de Runge-Kutta a cuarto orden con adaptación de tamaño escalonado. Bueno, SciPy nos proporciona una rutina para cosas como esa, es decir, odeint. Sin embargo, **VectorFieldPlot** utiliza su propia rutina, ya que hay muchos casos especiales como singularidades, bordes o cierres de bucles, todos los cuales necesitan un tratamiento especial.
 
 La integración pasa de un punto a otro hasta que excede algunos límites dados, llega a una singularidad o cierra un ciclo. Después de eso, se proporciona una rutina densa de salida, que hace que la línea de campo completa sea accesible como una función paramétrica eficiente.
 
-Con algunos elementos de campo aparecen ubicaciones no diferenciables. En estos casos, **VectorFieldPlot** proporciona algunas rutinas sofisticadas para detectar eso, ubicarlos con precisión y pasar cerca de ellos sin generar errores significativos.
+Con algunos elementos de campo aparecen ubicaciones no diferenciables. En estos casos, **VectorFieldPlot** proporciona algunas rutinas sofisticadas para detectarlos, ubicarlos con precisión y pasar cerca de ellos sin generar errores significativos.
 
 ### Creación de polilíneas (Polyline creation)
 
-**VectorFieldPlot** está supuesto para crear salida vectorial. Por lo tanto, todos los caminos deben representarse de manera adecuada. Las curvas cúbicas de Bézier son una forma de hacer esto, pero el inconveniente de adaptarlas a una curva dada dentro de los límites de precisión dados ha hecho que los segmentos de líneas rectas simples sean la primera opción.
+Se espera que **VectorFieldPlot** cree una salida vectorial. Por lo tanto, todos los caminos deben representarse de manera adecuada. Las curvas cúbicas de Bézier son una forma de hacer esto, pero el inconveniente de adaptarlas a una curva dada dentro de los límites de precisión dados ha hecho que los segmentos de líneas rectas simples sean la primera opción.
 
-**VectorFieldPlot** ejecuta un proceso iterativo de colocar segmentos de línea en el camino, mediendo los errores resultantes y, en consecuencia, adaptando la longitud del segmento. El resultado es una ruta bastante eficiente en memoria, que satisface los precisos requerimientos dados más allá de las desviaciones observables.
+**VectorFieldPlot** ejecuta un proceso iterativo de colocar segmentos de línea en el camino, midiendo los errores resultantes y, en consecuencia, adaptando la longitud del segmento. El resultado es una ruta bastante eficiente en memoria, que satisface los precisos requerimientos dados más allá de las desviaciones observables.
 
 ### Exportar imagen
 
-**VectorFieldPlot** usa la biblioteca **lxml** para generar **xml** y especialmente código **svg**. Todos los elementos de la imagen son traducidos al lenguaje **svg** y se escritos en el archivo de imagen. Las imágenes vectoriales pueden ser visualizadas directamente con firefox, eye de gnome, rsvg-view y muchos más. Los programas gráficos como gimp permiten la conversión a imágenes rasterizadas en formato **png** si es necesario.
+**VectorFieldPlot** usa la biblioteca **lxml** para generar **xml** y especialmente código **svg**. Todos los elementos de la imagen son traducidos al lenguaje **svg** y son escritos en el archivo de imagen. Las imágenes vectoriales pueden ser visualizadas directamente con Firefox, Eye of Gnome, Rsvg-view y muchos programas más. Los programas gráficos como Gimp permiten la conversión a imágenes de mapa de bits en formato **png** si es necesario.
 
 ### Uso
 [Link](https://github.com/nataly-nicole/VectorFieldPlot/blob/master/VectorFieldPlot%20-%20Uso.ipynb).
